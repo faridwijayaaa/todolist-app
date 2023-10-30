@@ -10,7 +10,7 @@ function todoReducer(state = initState, action) {
   switch (action.type) {
     case "ADD_TODO":
       const newTodo = {
-        id: Date.now(),
+        id: state.todos.length + 1,
         value: action.payload,
         status: false,
       };
@@ -34,11 +34,7 @@ function todoReducer(state = initState, action) {
       const indexTodo = editTodo.findIndex(
         (item) => item.id === action.payload.id
       );
-      editTodo[indexTodo].value = action.payload.value;
-
-      return {
-        todos: editTodo,
-      };
+      return indexTodo;
 
     case "STATUS_TODO":
       const activeTodosClone = [...state.todos];
