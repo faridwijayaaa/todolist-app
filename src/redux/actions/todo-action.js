@@ -11,3 +11,17 @@ export function deleteTodo(id) {
     payload: id,
   };
 }
+
+export function editTodo(todo) {
+  return {
+    type: "EDIT_TODO",
+    payload: todo,
+  };
+}
+
+export function statusTodo(index) {
+  return {
+    type: "STATUS_TODO",
+    payload: index,
+  };
+}

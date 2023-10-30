@@ -1,8 +1,12 @@
+import TodoInput from "./components/todo-input";
+import TodoList from "./components/todo-list";
+
 function App() {
   return (
     <>
-      <div>
-        <h1 className={"text-3xl font-bold underline"}> Hello World</h1>
+      <div className={"md-container md:mx-auto mt-16"}>
+        <TodoInput />
+        <TodoList />
       </div>
     </>
   );
