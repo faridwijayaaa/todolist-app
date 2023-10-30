@@ -8,8 +8,9 @@ import { useState } from "react";
 function TodoList() {
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todo);
-  const { isEdit, setIsEdit } = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
+  const [isEdit, setIsEdit] = useState(false);
+  const [edit, setEdit] = useState();
 
   const handleDelete = (id) => {
     dispatch(deleteTodo(id));
@@ -20,7 +21,8 @@ function TodoList() {
   };
 
   const handleEdit = (todo) => {
-    dispatch(editTodo(todo));
+    setEdit(dispatch(editTodo(todo)));
+    setEdit(todo.value);
     setIsEdit(true);
   };
 
@@ -36,14 +38,6 @@ function TodoList() {
 
   const handleClick = (status) => {
     setActiveFilter(status);
-  };
-
-  const handleActive = () => {
-    setActiveFilter("Active");
-  };
-
-  const handleComplete = () => {
-    setActiveFilter("Completed");
   };
 
   return (
@@ -80,6 +74,7 @@ function TodoList() {
               {todo.value}
             </span>
           </div>
+
           <div className="">
             <button onClick={() => handleEdit(todo)} className="mx-5">
               🖋️

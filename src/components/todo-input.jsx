@@ -9,13 +9,10 @@ function TodoInput() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // if (isEdit) {
-    //   setIsEdit(false);
-    // } else {
+
     console.log(input);
     input.length > 0 ? dispatch(addTodo(input)) : "";
     setInput("");
-    // }
   };
 
   return (
